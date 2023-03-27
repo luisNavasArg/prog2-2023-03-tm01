@@ -1,0 +1,11 @@
+<% if (criterio=='lista') { %>
+ 
+<h1>Lista de Bandas</h1>
+<% } else { %>
+ <h1>lista de bandas por genero</h1>
+ <%} %>
+<ul>
+    <% for( let index = 0; index < bandas.length; index++ ) { %>
+    <li> <%= bandas[index].nombre %> <a href="/bandas/detalle/<%= bandas[index].id %>">Ver más</a></li>
+    <% } %>
+</ul>
