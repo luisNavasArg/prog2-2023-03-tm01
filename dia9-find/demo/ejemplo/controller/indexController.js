@@ -3,7 +3,7 @@ const Movie = db.Movie;
 const controller={
     
     index:function(req, res, next) {
-        Movie.findAll().then(function(data){
+        Movie.findAll(relaciones).then(function(data){
            return res.render("index",{title:"mi título",data:data});
         } ).catch(function(err){console.log(err)})
         // res.render('index', { title: 'Express' });
@@ -23,12 +23,10 @@ const controller={
           ]
         }
         Movie.findByPk(id,relaciones).then(function(data){
-          // let movie={
-          //   id:title, `rating`, `awards`, `release_date`, `length`, `genre_id
-          // }
+         
           console.log(data);
 
-          return res.render("index",{title:"Por clave primaria",data:[data]});
+          return res.render("detalle",{title:"Por clave primaria",data:[data]});
        } ).catch(function(err){console.log(err)})
       },
       genre:(req,res)=>{

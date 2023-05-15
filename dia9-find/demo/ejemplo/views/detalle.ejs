@@ -10,8 +10,16 @@
     <ul>
       <% for( let i = 0; i < data.length; i++ ) { %>
         <li><%= data[i].title %> <a href="/one/<%= data[i].id %>">Detalle</a>
-          <span><%= data[i].genre_id %></p>
-      
+          <li>Genero:<%= data[i].genre.name %></li>
+          <li> Actores:
+            <ul>
+              <% for( let j = 0; j < data[i].actors.length; j++ ) { %>
+                <% let e = data[i].actors[j] %>
+              <li><%= e.first_name %> <%= e.last_name %></li>
+              <% } %>
+            </ul>
+          </li>
+          
       <% } %>
     </ul>
   </body>
