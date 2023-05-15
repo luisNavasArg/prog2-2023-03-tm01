@@ -9,13 +9,25 @@ const controller={
         // res.render('index', { title: 'Express' });
       },findOne:function(req,res){
         let id = req.params.id;
-        Movie.findOne({where:[{id:id}]}).then(function(data){
+        let criterio={where:[{id:id}]}
+        Movie.findOne(criterio).then(function(data){
           return res.render("index",{title:"Con findOne",data:[data]});
        } ).catch(function(err){console.log(err)})
       },
       findByPk:(req,res)=>{
         let id = req.params.id;
-        Movie.findByPk(id).then(function(data){
+        let relaciones={
+          include:[
+            {association:'genre'},
+            {association:'actors'}
+          ]
+        }
+        Movie.findByPk(id,relaciones).then(function(data){
+          // let movie={
+          //   id:title, `rating`, `awards`, `release_date`, `length`, `genre_id
+          // }
+          console.log(data);
+
           return res.render("index",{title:"Por clave primaria",data:[data]});
        } ).catch(function(err){console.log(err)})
       },
