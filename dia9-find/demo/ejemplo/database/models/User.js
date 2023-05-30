@@ -15,7 +15,7 @@ module.exports=function (sequelize, dataTypes) {
             password:{
                 type:dataTypes.STRING
             },
-            remenber_token:{
+            remember_token:{
                 type:dataTypes.STRING
             },
             created_at:{
